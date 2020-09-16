@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  sgkafka:
+    image: proy/sg-kafka:v1
+    hostname: sgkafka
+    container_name: sgkafka
+    # ports:
+    #   - "2181:2181"
+    # environment:
+    #   ZOOKEEPER_CLIENT_PORT: 2181
+    #   ZOOKEEPER_TICK_TIME: 2000
+
