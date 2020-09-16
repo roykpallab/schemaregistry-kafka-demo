@@ -20,7 +20,11 @@ helm install my-sreg -f local-helm-value.yml incubator/schema-registry
 
 kubectl run sgtest-container -it --image=proy/sg-kafka:v1
 
-# test python-avro-producer
+# test python-avro-producer, go inside the container name sgtest-container 
+
+cd /code/python-avro-producer
+
+
 python send_record.py --topic create-user-request --bootstrap-servers my-kafka-cluster-kafka-bootstrap:9092 --schema-file create-user-request.avsc --record-value '{"email": "email@email.com", "firstName": "Pulak", "lastName": "Roy"}'
 
 python consume_record.py --topic create-user-request --bootstrap-servers my-kafka-cluster-kafka-bootstrap:9092 --schema-file create-user-request.avsc
