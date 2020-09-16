@@ -20,9 +20,14 @@ helm install my-sreg -f local-helm-value.yml incubator/schema-registry
 
 kubectl run sgtest-container -it --image=proy/sg-kafka:v1
 
-# python-avro-producer
+# test python-avro-producer
 python send_record.py --topic create-user-request --bootstrap-servers my-kafka-cluster-kafka-bootstrap:9092 --schema-file create-user-request.avsc --record-value '{"email": "email@email.com", "firstName": "Pulak", "lastName": "Roy"}'
 
 python consume_record.py --topic create-user-request --bootstrap-servers my-kafka-cluster-kafka-bootstrap:9092 --schema-file create-user-request.avsc
 
- 
+# schemaregistry and kafka broker test from kafka broker container 
+
+curl -X GET http://my-sreg-schema-registry:8081/subjects
+
+./kafka-topics.sh --list --bootstrap-server localhost:9092
+
