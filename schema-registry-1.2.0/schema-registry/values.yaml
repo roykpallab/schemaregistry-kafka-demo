@@ -8,7 +8,6 @@
 image: "confluentinc/cp-schema-registry"
 ## The container tag to use
 imageTag: 5.0.1
-#imageTag: 5.4.0
 ## Specify a imagePullPolicy
 ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
 imagePullPolicy: "IfNotPresent"
@@ -53,9 +52,7 @@ service:
 ## overrideBootstrapServers: "PLAINTEXT://dozing-prawn-kafka-headless:9092"
 ## Charts uses Kafka Coordinator Master Election: https://docs.confluent.io/current/schema-registry/docs/design.html#kafka-coordinator-master-election
 kafkaStore:
-  #overrideBootstrapServers: ""
-  # overrideBootstrapServers: "PLAINTEXT://my-kafka-cluster-kafka-brokers:9092"
-  overrideBootstrapServers: "PLAINTEXT://dhs-event-manager-kafka-brokers:9092"
+  overrideBootstrapServers: ""
   # By Default uses Release Name, but can be overridden.  Which means each release is its own group of
   # Schema Registry workers.  You can have multiple groups talking to same Kafka Cluster
   overrideGroupId: ""
@@ -112,7 +109,7 @@ sasl:
 ## Kafka Settings
 kafka:
   ## This is enabled only to allow installations of this chart without arguments
-  enabled: false
+  enabled: true
   ## Override kafka settings for default installations
   configurationOverrides:
     # Needed to run with 1 Kafka Broker
